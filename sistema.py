@@ -5,14 +5,17 @@ def cadastro():
     login=input("Digite o seu login:\n")
     senha=input("Digite sua senha:\n")
     tipo=input("Digite se você é professor ou aluno:\n")
-    p=[{"Nome":nome,"E-mail":email,"Login":login,"Senha":senha,"Tipo":tipo}]
-    l.append(p)
-    return l
-def pessoa(n,e,l,p):
+    adiciona(pessoa(nome,email,login,senha,tipo),l)
+    return l 
+    
+
+def pessoa(n,e,l,p,t):
     return {'nome':n,
     'email': e,
     'login' :l,
-    'senha': p}
+    'senha': p,
+    'tipo':t}
+
 def adiciona(p, l):
     l.append(p)
     return l
@@ -20,9 +23,10 @@ def adiciona(p, l):
 # print(s)
 usuarios = [{"Nome":"Daniel Lucas","E-mail":"daniel.icapui@hotmail.com","Login":"akeno_misaki","senha":"haifuri","Tipo":"aluno"},
     {"Nome":"Alysson","E-mail":"alysson.uern@hotmail.com","Login":"alyssonuern","senha":"uern1234","Tipo":"professor"}]
+
 def cadastrados():
     return usuarios
-
+#tentar definir uma variaavel para usa-la de refencia na interface como logado#priodiade máxima
 def login(): 
     l=cadastrados()
     # print(l)
@@ -41,13 +45,15 @@ def login():
         else:       
             count +=1
     if mundo==True:
-        interface()
+            return logado
     else:
         opcao=int(input("Senha ou login errado tente de novo\nDigite 1 para tentar de novo ou 2 para mudar senha:"))
         if opcao==1:
             login()
         elif opcao==2:
             recover()
+            login()
+#retornar algum valor
 def recover():           
             l=cadastrados()
             mundo=False
@@ -67,7 +73,7 @@ def recover():
                     novasenha=input("Digite sua nova senha:\n")
                     l[count-1]["senha"] = novasenha
                     print("Senha atualizada com sucesso, Voltando para tela de login.")
-                    login()
+                    return l
                     break
                     break
                 else:
@@ -79,15 +85,16 @@ def recover():
                         mundo==True
                     
                 
-            
+             
 def helloworld():
     # t=text(text='Bem vindo ao sistema de ensino de idiomas', align='center' ,color=color.blue)
-    world=int(input("Para se cadastrar digite 1\n Para login digite 2:\n"))
+    world=int(input("Para se cadastrar digite 1:\n Para login digite 2:\n"))
     if world==1:
-            cadastro()
-        
-    if world==2:
-            login()
+            a=cadastro()
+            return a
+    elif world==2:
+            b=login()
+            return b
     else:
             print("Opção inválida,desligando...")
             exit()
@@ -97,9 +104,27 @@ def mostra_lista(l):
         for k,v in m.items():
             print("{}: {}".format(k.capitalize(),v))
     print(40* '=')
+def loginoff():
+    exit()
+l_idiomas=[{"alemao":1},{"espanhol":2},{"frances":3},{"ingles":4},{"japones":5},{"madarim":6},{"portugues":7},{"russo":8}]
+def idiomas():
+    return l_idiomas
 
+l_horarios=[{"manha":1},{"tarde":2},{"noite":3}]
+def horarios():
+    return l_horarios
+#completar lista
+l_dias=[{}]
+def dias()
+    return l_dias
+
+#falta completar item com listas 4,5,6 e adiciona funções para colocar horários ,idiomas,dias para os usuarios tipo aluno para professores falta criar uma função de cadatrar notas,faltas e ver disciplinas que ministra.Além disso tem que definir um fluxo helloworld,cadastro ou login,interface.Todas as funções devem ter seus dados disponiveis para serem usados pela função interface
 def interface(): 
-    l_idiomas=[{"alemao":1},{"espanhol":2},{"frances":3},{"ingles":4},{"japones":5},{"madarim":6},{"portugues":7},{"russo":8}]
+    cadastrados()
+    helloworld()
+    idiomas()
+    horarios()
+    l_notas={}
     while True:
                 op = input("""
     1) Para Alunos:Cadastrar ou consultar os idiomas que pretende estudar.
@@ -111,33 +136,31 @@ def interface():
     7)Login off
         Escolha uma opção: """)
                 if op == '1':
-                    print("cadastros")
+                    mostra_lista(l_idiomas)
+                    opcao=int(input("Digite os idiomas que pretende estudar:\n"))
+                    #melhorar o sistema para adicionar materias ao usuario logado
+                    adiciona(opcao,l)
                 if op == '2':
-                    mostra_lista(l_clientes)
+                    mostra_lista(l_horarios)
+                    opcao=int(input("Escolhar seu horário que deseja estudar:\n"))
+                    #melhorar o sistem para adicionar dias e horarios ao usuario logado
+                    adiciona(opcao,l)
                 
                 if op == '3':
-                    mostra_lista(l_funcionarios)
-                    mostra_lista(l2_funcionarios)
+                    #definir e consultar cidade e estado onde o curso será realizadoo
 
                 if op == '4':
-                    exit()
+                    #criar uma função para cadastrar notas de usuarios tipo alunos
 
                 if op=='5':
-                    mostra_lista(l_serv)
-                    servico=int(input("Digite o serviço desejado:"))
-                    if servico>=1 and servico<=7:
-                        print("No momento o serviço está fora de circulação, tente novamente em outra hora")
-                        info=int(input("Para mais informações digite 2:"))
-                        if info==2 :
-                                 print("Os serviços não estão funcionando devido a falta de funcionarios, se você tiver em interesse em trabalhar conosco volte para o menu inicial e digite 6")
-                        else:
-                                 print("Voltando ao menu")
+                    #criar uma função para cadastrar faltas e exibir de usuarios tipo alunos
                 if op=='6':
-                    nome = input("Digite o seu nome: ")
-                    sexo= input("Digite o seu sexo? (homem/mulher): ")
-                    cart= input("Digite o numero da sua carteira: ")
-                    funcao=input("Digite sua função programador(a) ou designer") 
-                    adiciona_pessoa(programador(nome,sexo, cart,funcao), l2_funcionarios)
+                    #criar uma função para mostrar as diciplinas que este professor ministra
+                if op=='7':
+                    loginoff()
 if __name__=='__sistema__':
     interface()
-entrar=helloworld()
+#chamar a função interface e todas as subfunções devem funcionar seguidamente com seus dados
+interface()
+
+
