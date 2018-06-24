@@ -1,5 +1,3 @@
-from sistema import *
-# from vpython import *
 def cadastro():
     l=cadastrados()
     nome=input("Digite o seu nome:\n ")
@@ -20,10 +18,10 @@ def adiciona(p, l):
     return l
 # s=cadastro()
 # print(s)
-def cadastrados():
-    l=[{"Nome":"Daniel Lucas","E-mail":"daniel.icapui@hotmail.com","Login":"akeno_misaki","senha":"haifuri","Tipo":"aluno"},
+usuarios = [{"Nome":"Daniel Lucas","E-mail":"daniel.icapui@hotmail.com","Login":"akeno_misaki","senha":"haifuri","Tipo":"aluno"},
     {"Nome":"Alysson","E-mail":"alysson.uern@hotmail.com","Login":"alyssonuern","senha":"uern1234","Tipo":"professor"}]
-    return l
+def cadastrados():
+    return usuarios
 
 def login(): 
     l=cadastrados()
@@ -67,7 +65,7 @@ def recover():
                 if mundo==True:
                     print("E-mail correto")
                     novasenha=input("Digite sua nova senha:\n")
-                    adiciona(l[count-1]["password"] = novasenha,l)
+                    l[count-1]["senha"] = novasenha
                     print("Senha atualizada com sucesso, Voltando para tela de login.")
                     login()
                     break
