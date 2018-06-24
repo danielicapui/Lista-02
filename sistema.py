@@ -26,6 +26,29 @@ usuarios = [{"Nome":"Daniel Lucas","E-mail":"daniel.icapui@hotmail.com","Login":
 
 def cadastrados():
     return usuarios
+def professores():
+     l=cadastrados()
+     count=0
+     a="professor"
+     docente=[]
+     while count<=len(l):
+            c=l[count-1]["Tipo"]
+            if a==c:      
+                docente.append(c)
+            count +=1
+     return docente
+def alunos():
+     l=cadastrados()
+     count=0
+     b="aluno"
+     discente=[]
+     while count<=len(l):
+            c=l[count-1]["Tipo"]
+            if b==c:      
+                discente.append(c)
+            count +=1
+     return discente
+
 #tentar definir uma variaavel para usa-la de refencia na interface como logado#priodiade máxima
 def login(): 
     l=cadastrados()
@@ -114,17 +137,24 @@ l_horarios=[{"manha":1},{"tarde":2},{"noite":3}]
 def horarios():
     return l_horarios
 #completar lista
-l_dias=[{}]
-def dias()
+l_dias=[{"segunda":1},{"terca":2},{"quarta":3},{"quinta":4},{"sexta":5}]
+def dias():
     return l_dias
 
+def notas(discente,nota):
+    alunos()
+    discente=[{}]
+    discente.append(nota)
+    return discente
+
+def faltas()
 #falta completar item com listas 4,5,6 e adiciona funções para colocar horários ,idiomas,dias para os usuarios tipo aluno para professores falta criar uma função de cadatrar notas,faltas e ver disciplinas que ministra.Além disso tem que definir um fluxo helloworld,cadastro ou login,interface.Todas as funções devem ter seus dados disponiveis para serem usados pela função interface
 def interface(): 
     cadastrados()
     helloworld()
     idiomas()
     horarios()
-    l_notas={}
+    notas()
     while True:
                 op = input("""
     1) Para Alunos:Cadastrar ou consultar os idiomas que pretende estudar.
@@ -150,6 +180,26 @@ def interface():
                     #definir e consultar cidade e estado onde o curso será realizadoo
 
                 if op == '4':
+                    alunos()
+                    print(notas)
+                    opcao=input("Deseja cadastrar notas (y\n)")
+                    if opcao=='y':
+                        nota=int(input("Digite a nota que você quer colocar:\n"))
+                        print(discente)
+                        tipo=input(("Digite ao usuario ao qual você quer colocar a nota"))
+                        count=0
+                        while count<=len(l):
+                            aluno=l[count-1]["Login"]
+                            if aluno==tipo:
+                                notas(tipo,nota)
+                                print(notas)
+                                break
+                            else:       
+                                count +=1
+                    elif opcao=='n':
+                        print("Voltando ao menu")
+                    else:
+                        print("Opção inválida")
                     #criar uma função para cadastrar notas de usuarios tipo alunos
 
                 if op=='5':
