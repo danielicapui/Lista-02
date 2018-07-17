@@ -11,14 +11,20 @@
 
 ---
 
-## Daniel Lucas - [danielicapui](https://github.com/danielicapui)
+## Daniel Lucas dos Reis Silva - [danielicapui](https://github.com/danielicapui/)
 
 ---
 
-## FcoVitor - [Fcovitor](https://github.com/Fcovitor/)
+## Francisco Vitor Felix de Aquino - [Fcovitor](https://github.com/Fcovitor/)
 
 ---
 
-## Veridiano Francisco -[Veridiano1976](https://github.com/Veridiano1976/)
+## Veridiano Francisco da Silva -[Veridiano1976](https://github.com/Veridiano1976/)
 
 ---
+
+#Professor:
+
+---
+
+## Alysson Oliveira - [AlyssonOliveira](https://github.com/AlyssonOliveira/)
