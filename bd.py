@@ -1,8 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import os
 from config import *
 
 def salvarUsuario(usuario):
-	arq = open(caminho+usuario["login"], "w")
+	arq = open(caminho+usuario["login"], "w",  encoding="utf-8")
 	for key in usuario.keys():
 		arq.write(usuario[key])
 		arq.write("\n")
@@ -24,13 +26,13 @@ def buscarUsuario(login):
 
 def usuarioExiste(nomeUsuario):
 	try:
-		arquivo = open(caminho+nomeUsuario, "r")
+		arquivo = open(caminho+nomeUsuario, "r",  encoding="utf-8")
 		return True
 	except FileNotFoundError:
 		return False
 
 def pegarSenha(nomeUsuario):
-	arquivo = open(caminho+nomeUsuario, "r")
+	arquivo = open(caminho+nomeUsuario, "r",  encoding="utf-8")
 	dados = buscarUsuario(nomeUsuario)
 	return dados["senha"]
 
